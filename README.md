@@ -1,1 +1,1 @@
-# plants-demo-micronaut
+# Plants Demo Micronaut
