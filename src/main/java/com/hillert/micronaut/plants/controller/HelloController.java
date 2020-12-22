@@ -13,27 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hillert.micronaut.plants;
+package com.hillert.micronaut.plants.controller;
 
-import io.micronaut.runtime.EmbeddedApplication;
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
-
-import javax.inject.Inject;
+import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Get;
+import io.micronaut.http.annotation.Produces;
 
 /**
- * @author  Gunnar Hillert
+ * @author Gunnar Hillert
  */
-@MicronautTest
-public class MicronautPlantsTest {
+@Controller
+public class HelloController {
 
-    @Inject
-    EmbeddedApplication<?> application;
-
-    @Test
-    void testItWorks() {
-        Assertions.assertTrue(application.isRunning());
+    @Get("/hello")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String index() {
+        return "World!";
     }
 
 }
