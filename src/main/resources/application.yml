@@ -9,3 +9,8 @@ datasources:
     password: pembana
     schema-generate: NONE
     dialect: POSTGRES
+flyway:
+  datasources:
+    default:
+      enabled: true
+      baseline-on-migrate: false

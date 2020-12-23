@@ -24,3 +24,8 @@ Run the native app:
 ./target/micronaut-plants
 ```
 
+Shrink the native app size using [UPX](https://medium.com/graalvm/compressed-graalvm-native-images-4d233766a214):
+
+```bash
+upx -7 -k target/micronaut-plants
+```
