@@ -5,7 +5,7 @@ create table IMAGES (
     updated_by varchar(255),
     updated_on timestamp,
     version integer,
-    image oid,
+    image bytea,
     name varchar(255),
     plant_id bigint,
     primary key (id)

@@ -21,6 +21,8 @@
     <exec.mainClass>com.hillert.micronaut.plants.Application</exec.mainClass>
     <micronaut.data.version>2.2.1</micronaut.data.version>
     <micronaut.runtime>netty</micronaut.runtime>
+
+    <univocity-parsers.version>2.9.0</univocity-parsers.version>
   </properties>
 
   <repositories>
@@ -119,6 +121,22 @@
       <groupId>org.testcontainers</groupId>
       <artifactId>postgresql</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.persistence</groupId>
+      <artifactId>jakarta.persistence-api</artifactId>
+      <version>2.2.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.locationtech.jts</groupId>
+      <artifactId>jts-core</artifactId>
+      <version>1.17.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.univocity</groupId>
+      <artifactId>univocity-parsers</artifactId>
+      <version>${univocity-parsers.version}</version>
     </dependency>
   </dependencies>
 

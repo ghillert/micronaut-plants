@@ -1,3 +1,7 @@
+plants:
+  demo-data-file: "classpath:demo-data/import.csv"
+  demo-data-images: "classpath:demo-data"
+  demo-data-import-mode: delete-and-import
 micronaut:
   application:
     name: micronautPlants

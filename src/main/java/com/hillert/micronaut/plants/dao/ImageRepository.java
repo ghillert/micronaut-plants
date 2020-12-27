@@ -13,23 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hillert.micronaut.plants.controller;
+package com.hillert.micronaut.plants.dao;
 
-import io.micronaut.http.MediaType;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Produces;
+import com.hillert.micronaut.plants.model.Image;
+
+import io.micronaut.data.annotation.Repository;
+import io.micronaut.data.jdbc.annotation.JdbcRepository;
+import io.micronaut.data.model.query.builder.sql.Dialect;
+import io.micronaut.data.repository.PageableRepository;
 
 /**
  * @author Gunnar Hillert
+ * @since 1.0
  */
-@Controller
-public class HelloController {
-
-	@Get("/hello")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String index() {
-		return "World!";
-	}
-
+@Repository
+@JdbcRepository(dialect = Dialect.POSTGRES)
+public interface ImageRepository extends PageableRepository<Image, Long> {
 }

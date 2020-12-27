@@ -13,23 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.hillert.micronaut.plants.controller;
-
-import io.micronaut.http.MediaType;
-import io.micronaut.http.annotation.Controller;
-import io.micronaut.http.annotation.Get;
-import io.micronaut.http.annotation.Produces;
+package com.hillert.micronaut.plants.service;
 
 /**
+ * The importer is responsible to import demo data into the application.
+ *
  * @author Gunnar Hillert
+ *
  */
-@Controller
-public class HelloController {
+public interface Importer {
 
-	@Get("/hello")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String index() {
-		return "World!";
-	}
+	/**
+	 * Trigger the demo data import.
+	 */
+	void importPlantData();
 
 }
