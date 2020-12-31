@@ -19,14 +19,10 @@ import io.micronaut.core.annotation.Creator;
 import io.micronaut.data.annotation.TypeDef;
 import io.micronaut.data.model.DataType;
 
-import java.io.Serializable;
-
-import javax.persistence.Basic;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @author Gunnar Hillert
@@ -46,7 +42,9 @@ public class Image extends BaseModelObject implements Serializable {
 	private Plant plant;
 
 	public Image(String name, byte[] data, Plant plant) {
-		super();
+		this.name = name;
+		this.plant = plant;
+		this.image = data;
 	}
 
 	@Creator

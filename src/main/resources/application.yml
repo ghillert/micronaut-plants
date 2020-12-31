@@ -1,7 +1,7 @@
 plants:
   demo-data-file: "classpath:demo-data/import.csv"
   demo-data-images: "classpath:demo-data"
-  demo-data-import-mode: delete-and-import
+  demo-data-import-mode: import_once
 micronaut:
   application:
     name: micronautPlants
@@ -13,8 +13,12 @@ datasources:
     password: pembana
     schema-generate: NONE
     dialect: POSTGRES
+
 flyway:
   datasources:
     default:
       enabled: true
       baseline-on-migrate: false
+jackson:
+  serialization:
+    INDENT_OUTPUT: true

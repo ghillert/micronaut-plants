@@ -15,15 +15,14 @@
  */
 package com.hillert.micronaut.plants.model;
 
+import io.micronaut.data.annotation.DateCreated;
 import io.micronaut.data.annotation.GeneratedValue;
 import io.micronaut.data.annotation.Id;
 
-import java.io.Serializable;
-
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
-
-//import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import java.io.Serializable;
+import java.time.Instant;
 
 /**
  *
@@ -31,7 +30,6 @@ import javax.persistence.Version;
  *
  */
 @MappedSuperclass
-//@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseModelObject implements Serializable {
 
 	private static final long serialVersionUID = -8683328871869934098L;
@@ -40,8 +38,11 @@ public abstract class BaseModelObject implements Serializable {
 	@GeneratedValue(ref="hibernate_sequence", value=GeneratedValue.Type.SEQUENCE)
 	protected Long id;
 
-	@Version
+	@Version // https://github.com/micronaut-projects/micronaut-data/issues/556
 	protected Integer version;
+
+	@DateCreated
+	protected Instant createdOn;
 
 	public Long getId() {
 		return id;
@@ -55,6 +56,14 @@ public abstract class BaseModelObject implements Serializable {
 	}
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	public Instant getCreatedOn() {
+		return createdOn;
+	}
+
+	public void setCreatedOn(Instant createdOn) {
+		this.createdOn = createdOn;
 	}
 
 	@Override

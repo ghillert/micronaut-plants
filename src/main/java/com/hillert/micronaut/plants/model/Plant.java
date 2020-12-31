@@ -15,21 +15,14 @@
  */
 package com.hillert.micronaut.plants.model;
 
-import java.io.Serializable;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.locationtech.jts.geom.Point;
-
 import io.micronaut.data.annotation.TypeDef;
 import io.micronaut.data.jdbc.annotation.ColumnTransformer;
 import io.micronaut.data.model.DataType;
+import org.locationtech.jts.geom.Point;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name="PLANTS")

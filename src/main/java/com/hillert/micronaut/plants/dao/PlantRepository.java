@@ -16,16 +16,7 @@
 
 package com.hillert.micronaut.plants.dao;
 
-import java.util.List;
-import java.util.Optional;
-
-import javax.validation.constraints.NotNull;
-
-import org.locationtech.jts.geom.Point;
-
 import com.hillert.micronaut.plants.model.Plant;
-
-import io.micronaut.data.annotation.Join;
 import io.micronaut.data.annotation.Query;
 import io.micronaut.data.annotation.Repository;
 import io.micronaut.data.annotation.TypeDef;
@@ -33,6 +24,11 @@ import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.model.DataType;
 import io.micronaut.data.model.query.builder.sql.Dialect;
 import io.micronaut.data.repository.PageableRepository;
+import org.locationtech.jts.geom.Point;
+
+import javax.validation.constraints.NotNull;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Gunnar Hillert
@@ -41,15 +37,11 @@ import io.micronaut.data.repository.PageableRepository;
 @JdbcRepository(dialect = Dialect.POSTGRES)
 public interface PlantRepository extends PageableRepository<Plant, Long> {
 
-	@Query("SELECT * from Plants p left join images i on i.plant_id = p.id WHERE p.id = :plantId")
-	Optional<Plant> getSinglePlantWithImages(Long plantId);
-
-	@Query(
-			value = "SELECT * from Plants p WHERE st_dwithin(p.location, CAST( :location as geometry), :radius, true) = true")
-	List<Plant> getPlantsWithinRadius(@TypeDef(type = DataType.STRING) Point location, double radius);
+	@Query("SELECT * from Plants p WHERE st_dwithin(p.location, CAST( :location as geometry), :radius, true) = true")
+	public abstract List<Plant> getPlantsWithinRadius(@TypeDef(type = DataType.STRING) Point location, double radius);
 
     //@Join("plant")
 	//@Query("SELECT * from Plants p WHERE p.location = :location")
-    Optional<Plant> findByLocation(@NotNull @TypeDef(type = DataType.STRING) Point location);
+    public abstract Optional<Plant> findByLocation(@NotNull @TypeDef(type = DataType.STRING) Point location);
     //Optional<Plant> findByLocation(@NotNull String location);
 }

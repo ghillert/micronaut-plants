@@ -1,7 +1,7 @@
 /**
   You may need to do this manually as super-user permissions are required.
  */
-CREATE EXTENSION postgis;
+-- CREATE EXTENSION postgis;
 
 CREATE SEQUENCE hibernate_sequence start with 1 increment by 1;
 

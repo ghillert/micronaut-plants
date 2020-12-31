@@ -15,10 +15,10 @@
  */
 package com.hillert.micronaut.plants.service.impl;
 
-import javax.validation.constraints.NotBlank;
-
 import com.univocity.parsers.annotations.Parsed;
 import com.univocity.parsers.annotations.Trim;
+
+import javax.validation.constraints.NotBlank;
 
 /**
  * @author Gunnar Hillert

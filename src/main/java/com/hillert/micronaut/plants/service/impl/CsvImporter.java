@@ -15,36 +15,29 @@
  */
 package com.hillert.micronaut.plants.service.impl;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
-import javax.inject.Singleton;
-import javax.transaction.Transactional;
-
+import com.hillert.micronaut.plants.config.PlantsConfig;
+import com.hillert.micronaut.plants.dao.ImageRepository;
+import com.hillert.micronaut.plants.dao.PlantRepository;
 import com.hillert.micronaut.plants.model.Image;
+import com.hillert.micronaut.plants.model.Plant;
+import com.hillert.micronaut.plants.service.Importer;
+import com.univocity.parsers.common.processor.BeanListProcessor;
+import com.univocity.parsers.csv.CsvParser;
+import com.univocity.parsers.csv.CsvParserSettings;
+import io.micronaut.context.event.StartupEvent;
+import io.micronaut.core.io.ResourceLoader;
 import io.micronaut.core.util.StringUtils;
+import io.micronaut.runtime.event.annotation.EventListener;
 import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.GeometryFactory;
 import org.locationtech.jts.geom.PrecisionModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.hillert.micronaut.plants.config.PlantsConfig;
-import com.hillert.micronaut.plants.dao.ImageRepository;
-import com.hillert.micronaut.plants.dao.PlantRepository;
-import com.hillert.micronaut.plants.model.Plant;
-import com.hillert.micronaut.plants.service.Importer;
-import com.univocity.parsers.common.processor.BeanListProcessor;
-import com.univocity.parsers.csv.CsvParser;
-import com.univocity.parsers.csv.CsvParserSettings;
-
-import io.micronaut.context.event.StartupEvent;
-import io.micronaut.core.io.ResourceLoader;
-import io.micronaut.runtime.event.annotation.EventListener;
+import javax.inject.Singleton;
+import javax.transaction.Transactional;
+import java.io.*;
+import java.util.List;
 
 /**
  * Implementation of the {@link Importer} that will import demo data from a CSV

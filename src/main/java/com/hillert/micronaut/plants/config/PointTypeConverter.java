@@ -15,18 +15,16 @@
  */
 package com.hillert.micronaut.plants.config;
 
-import java.util.Optional;
-
-import javax.inject.Singleton;
-
+import io.micronaut.context.annotation.Factory;
+import io.micronaut.core.convert.TypeConverter;
 import org.locationtech.jts.geom.Geometry;
 import org.locationtech.jts.geom.Point;
 import org.locationtech.jts.io.ParseException;
 import org.locationtech.jts.io.WKBReader;
 import org.locationtech.jts.io.WKBWriter;
 
-import io.micronaut.context.annotation.Factory;
-import io.micronaut.core.convert.TypeConverter;
+import javax.inject.Singleton;
+import java.util.Optional;
 
 /**
  * @author Gunnar Hillert
