@@ -9,7 +9,7 @@
 And then in a separate terminal window:
 
 ```bash
-open http://localhost:8080/hello
+open http://localhost:8080/
 ```
 `
 Build the native image:
