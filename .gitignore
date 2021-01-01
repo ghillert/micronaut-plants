@@ -12,3 +12,9 @@ out/
 .settings
 .classpath
 .factorypath
+
+.DS_Store
+/ui/node
+/ui/dist
+/ui/coverage
+/ui/node_modules

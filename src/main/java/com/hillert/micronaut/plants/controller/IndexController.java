@@ -15,21 +15,31 @@
  */
 package com.hillert.micronaut.plants.controller;
 
+import io.micronaut.core.io.ResourceLoader;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
+import io.micronaut.http.annotation.UriMapping;
+import io.micronaut.http.server.types.files.StreamedFile;
+
+import javax.annotation.Nullable;
+import javax.inject.Inject;
+import java.util.Optional;
 
 /**
  * @author Gunnar Hillert
  */
 @Controller
-public class HelloController {
+public class IndexController {
 
-	@Get("/hello")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String index() {
-		return "World!";
+	@Inject
+	ResourceLoader resourceLoader;
+
+	@Get(uris = { "/plants{/path:.*}", "/garden{/path:.*}", "/about{/path:.*}" })
+	@Produces(MediaType.TEXT_HTML)
+	public Optional<StreamedFile> defaultPage(@Nullable String path) {
+		return resourceLoader.getResource("classpath:public/index.html").map(StreamedFile::new);
 	}
 
 }

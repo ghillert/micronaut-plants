@@ -60,15 +60,6 @@ public class PlantController implements ExceptionHandler<PlantNotFoundProblem, H
 
 	private static final Logger LOG = LoggerFactory.getLogger(PlantController.class);
 
-	@Inject
-	ResourceLoader resourceLoader;
-
-	@Get(uris = { "/plants", "/garden", "/about" })
-	@Produces(MediaType.TEXT_HTML)
-	public Optional<StreamedFile> defaultPage() {
-		return resourceLoader.getResource("classpath:public/index.html").map(StreamedFile::new);
-	}
-
 	@ReflectiveAccess
 	@Inject
 	private PlantService plantService;

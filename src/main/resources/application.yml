@@ -5,6 +5,12 @@ plants:
 micronaut:
   application:
     name: micronautPlants
+  router:
+    static-resources:
+      '*':
+        enabled: true
+        paths:
+          - "classpath:public"
 datasources:
   default:
     url: jdbc:postgresql://localhost:5432/pembana
